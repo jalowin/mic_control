@@ -7,4 +7,4 @@ if [ $state = "off" ]; then
 else
     icon="audio-input-microphone-symbolic"
 fi
-notify-send --hint=int:transient:1 -i $icon "Mic switched: $state" -i "audio-input-microphone" "Mic switched: $state"
+notify-send --app-name="Mic Control" --hint=int:transient:1 -i $icon "Mic switched: $state" -i "audio-input-microphone" "Mic switched: $state"

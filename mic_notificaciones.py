@@ -48,7 +48,11 @@ class Indicator():
 
     def notifications(self, bus, message):
         # do your magic
+        i=0
         for arg in message.get_args_list():
+            i = i +1
+            if ((i == 1) and (str(arg).find('Mic Control') == -1)):
+                break
             if (type(arg) == dbus.String):
                 if (str(arg).find('Mic switched: on') > -1):
                     self.indicator.set_icon(CURRPATH+"/microphone-on.png")
@@ -57,7 +61,7 @@ class Indicator():
                     self.indicator.set_icon(CURRPATH+"/microphone-off.png")
 
     def mic_toggle(self, source):
-        os.popen('/home/ricardo/mic_control.sh '+ sys.argv[1])
+        os.popen('/home/ricardo/mic_control.sh "'+ sys.argv[1]+'"')
 
 
     def mic_on(self, source):
